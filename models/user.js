@@ -18,17 +18,12 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
-    ph_no:{
-        type:String,
-        required:true,
-        maxlength:10
-    },
     program:{
         type:String,
         required:true
     },
     year:{
-        type:Number,
+        type:String,
         required:true,
     },
     role:{
