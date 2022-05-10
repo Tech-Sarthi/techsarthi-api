@@ -1,4 +1,4 @@
-const mongoose=require('require')
+const mongoose=require('mongoose')
 
 
 const teamMemberSchema= new mongoose.Schema({
@@ -22,6 +22,11 @@ const teamMemberSchema= new mongoose.Schema({
         index: true,
         maxlength:15,
         default: "member"
+    },
+    img:{
+        // https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+        data: Buffer,
+        contentType:String,
     }
 },{timestamps:true})
 

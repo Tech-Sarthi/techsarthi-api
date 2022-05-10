@@ -14,8 +14,6 @@ mongoose.connect(process.env.DATABASE)
 .then(()=>console.log("DB Connected"))
 .catch((err)=>`DB Connection failed due to ${err.message}`)
 
-const teamMember=require('./models/teamMember')
-
 // middlewares
 app.use(morgan("dev"))
 app.use(bodyParser.json({limit:"2mb"}))
@@ -26,7 +24,7 @@ fs.readdirSync("./routes").map((r)=>{
     app.use("/api",require("./routes/"+r));
 })
 
-
+const project=require('./models/project')
 
 // port
 port=process.env.PORT || 8000;
