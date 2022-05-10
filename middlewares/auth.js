@@ -2,6 +2,7 @@ const admin =require("../firebase");
 const User =require("../models/user");
 
 exports.authCheck=(req,res,next)=>{
+    console.log(User.find())
     // console.log(req.headers);
     admin.auth().verifyIdToken(req.headers.authtoken)
     .then((fbUser)=>{

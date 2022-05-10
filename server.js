@@ -6,7 +6,6 @@ const bodyParser=require("body-parser");
 const fs=require("fs");
 require("dotenv").config();
 
-
 // app
 const app=express()
 
@@ -14,6 +13,8 @@ const app=express()
 mongoose.connect(process.env.DATABASE)
 .then(()=>console.log("DB Connected"))
 .catch((err)=>`DB Connection failed due to ${err.message}`)
+
+const teamMember=require('./models/teamMember')
 
 // middlewares
 app.use(morgan("dev"))

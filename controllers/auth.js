@@ -1,6 +1,8 @@
 const User=require("../models/user");
+// const teamMember=require("../models/teamMember")
 
 exports.createUpdateUser=(req,res)=>{
+    console.log(req.user.email)
     const {email}=req.user;
     User.findOneAndUpdate({email},
         req.user,
