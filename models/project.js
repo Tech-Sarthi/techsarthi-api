@@ -15,6 +15,10 @@ const projectSchema=new mongoose.Schema({
         type:String,
         maxlength:250,
     },
+    likeCount: {
+        type: Number,
+        default: 0,
+    },
 },{timestamps:true})
 
 const Project=mongoose.model('Project',projectSchema);

@@ -1,3 +1,4 @@
+
 const express=require("express");
 const mongoose=require("mongoose");
 const morgan=require("morgan");
@@ -16,15 +17,14 @@ mongoose.connect(process.env.DATABASE)
 
 // middlewares
 app.use(morgan("dev"))
-app.use(bodyParser.json({limit:"2mb"}))
-app.use(cors())
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(cors());
 
 //routes middleware
 fs.readdirSync("./routes").map((r)=>{
     app.use("/api",require("./routes/"+r));
 })
-
-const project=require('./models/project')
 
 // port
 port=process.env.PORT || 8000;
