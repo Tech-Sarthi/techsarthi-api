@@ -8,6 +8,6 @@ const {searchProjects}=require("../controllers/project")
 const {authCheck}=require("../middlewares/auth");
 
 // routes
-router.post("/search",authCheck,searchProjects);
+router.post("/search",searchProjects);
 
 module.exports = router;
