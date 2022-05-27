@@ -25,7 +25,11 @@ const projectSchema=new mongoose.Schema({
         type:String,
         text:true,
         maxlength:20,
-    }]
+    }],
+    verified:{
+        type: Boolean,
+        default: false
+    }
 },{timestamps:true})
 
 const Project=mongoose.model('Project',projectSchema);
