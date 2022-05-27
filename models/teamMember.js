@@ -12,7 +12,7 @@ const teamMemberSchema= new mongoose.Schema({
         required:true,
         index:true,
     },
-    mobileNo:{
+    mobileNumber:{
         type:String,
         index:true,
         maxlength:13

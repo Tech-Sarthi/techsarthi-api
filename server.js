@@ -1,37 +1,31 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const morgan = require("morgan");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const fs = require("fs");
-
-const teamMemberRouter = require("./routes/teamMember");
-
+const express=require("express");
+const mongoose=require("mongoose");
+const morgan=require("morgan");
+const cors=require("cors");
+const bodyParser=require("body-parser");
+const fs=require("fs");
 require("dotenv").config();
-// app
-const app = express();
 
-//cors
-app.use(cors());
+// app
+const app=express()
 
 // db
-mongoose
-  .connect(process.env.DATABASE)
-  .then(() => console.log("DB Connected"))
-  .catch((err) => `DB Connection failed due to ${err.message}`);
+mongoose.connect(process.env.DATABASE)
+.then(()=>console.log("DB Connected"))
+.catch((err)=>`DB Connection failed due to ${err.message}`)
 
 // middlewares
-app.use(morgan("dev"));
-app.use(bodyParser.json({ limit: "2mb" }));
+app.use(morgan("dev"))
+app.use(bodyParser.json({limit:"2mb"}))
+app.use(cors())
 
 //routes middleware
-fs.readdirSync("./routes", { withFileTypes: true })
-  .filter((dirent) => dirent.isFile())
-  .map((dirent) => dirent.name)
-  .map((r) => {
-    app.use("/api", require("./routes/" + r));
-  });
+fs.readdirSync("./routes").map((r)=>{
+    app.use("/api",require("./routes/"+r));
+})
+
+const project=require('./models/project')
 
 // port
-port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`server is running on port ${port}`));
+port=process.env.PORT || 8000;
+app.listen(port,()=>console.log(`server is running on port ${port}`))
