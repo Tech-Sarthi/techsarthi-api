@@ -13,9 +13,9 @@ exports.getProjects = async (req, res) => {
 }
 
 exports.addProject = async (req, res) => {
-    const { companyName, companyLogo ,description } = req.body;
+    const { name_of_industry,type_of_industry,website,name_of_contact_person,designation_of_contact_person,contact_of_contact_person,problem_faced,other_details } = req.body;
 
-    const newProject = new Project({ companyName, companyLogo ,description })
+    const newProject = new Project({ name_of_industry,type_of_industry,website,name_of_contact_person,designation_of_contact_person,contact_of_contact_person,problem_faced,other_details})
 
     try {
         await newProject.save();
