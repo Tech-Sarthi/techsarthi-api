@@ -1,4 +1,5 @@
 const express = require ('express');
+const multer = require('multer')
 const mongoose = require ('mongoose');
 const Project = require('../models/project');
 
@@ -13,16 +14,36 @@ exports.getProjects = async (req, res) => {
 }
 
 exports.addProject = async (req, res) => {
-    const { name_of_industry,type_of_industry,website,name_of_contact_person,designation_of_contact_person,contact_of_contact_person,problem_faced,other_details } = req.body;
+    console.log(req.body)
+    const { name_of_industry,
+        website,
+        industry_logo,
+        type_of_industry,
+        name_of_contact_person,
+        designation_of_contact_person,
+        email_of_contact_person,
+        problem_faced,
+        problem_details,
+        other_details } = req.body;
 
-    const newProject = new Project({ name_of_industry,type_of_industry,website,name_of_contact_person,designation_of_contact_person,contact_of_contact_person,problem_faced,other_details})
-
+    const newProject = new Project({ name_of_industry,
+        website,
+        industry_logo,
+        type_of_industry,
+        name_of_contact_person,
+        designation_of_contact_person,
+        email_of_contact_person,
+        problem_faced,
+        problem_details,
+        other_details})
+     console.log('received')
     try {
         await newProject.save();
 
         res.status(201).json(newProject);
     } catch (error) {
         res.status(409).json({ message: error.message });
+        console.log(error.message)
     }
 }
 
