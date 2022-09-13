@@ -37,6 +37,7 @@ exports.addProject = async (req, res) => {
         problem_details,
         other_details})
      console.log('received')
+     console.log(newProject)
     try {
         await newProject.save();
 
