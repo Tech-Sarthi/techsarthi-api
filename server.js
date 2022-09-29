@@ -5,8 +5,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 
-const teamMemberRouter = require("./routes/teamMember");
-
 require("dotenv").config();
 // app
 const app = express();
