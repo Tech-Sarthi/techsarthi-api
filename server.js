@@ -19,6 +19,7 @@ mongoose
   .catch((err) => `DB Connection failed due to ${err.message}`);
 
 // middlewares
+app.use (express.urlencoded({extended: true}));
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 

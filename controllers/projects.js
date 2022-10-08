@@ -1,5 +1,4 @@
 const express = require ('express');
-const multer = require('multer')
 const mongoose = require ('mongoose');
 const Project = require('../models/project');
 
@@ -14,30 +13,27 @@ exports.getProjects = async (req, res) => {
 }
 
 exports.addProject = async (req, res) => {
-    console.log(req.body)
-    const { name_of_industry,
-        website,
-        industry_logo,
-        type_of_industry,
-        name_of_contact_person,
-        designation_of_contact_person,
-        email_of_contact_person,
-        problem_faced,
-        problem_details,
-        other_details } = req.body;
+    const name_of_industry = req.body.name_of_industry;
+    const website =req.body.website;
+    const type_of_industry =req.body.type_of_industry;
+    const name_of_contact_person = req.body.name_of_contact_person;
+    const designation_of_contact_person = req.body.designation_of_contact_person;
+    const email_of_contact_person = req.body.email_of_contact_person;
+    const problem_faced = req.body.problem_faced;
+    const other_details  = req.body.other_details;
+    let industry_logo = req.files['industry_logo'][0].filename;
+    let problem_details = req.files['problem_details'][0].filename;
 
     const newProject = new Project({ name_of_industry,
         website,
-        industry_logo,
         type_of_industry,
+        industry_logo,
         name_of_contact_person,
         designation_of_contact_person,
         email_of_contact_person,
         problem_faced,
         problem_details,
         other_details})
-     console.log('received')
-     console.log(newProject)
     try {
         await newProject.save();
 
