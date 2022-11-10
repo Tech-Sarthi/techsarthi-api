@@ -21,18 +21,18 @@ exports.addProject = async (req, res) => {
     const email_of_contact_person = req.body.email_of_contact_person;
     const problem_faced = req.body.problem_faced;
     const other_details  = req.body.other_details;
-    let industry_logo = req.files['industry_logo'][0].filename;
-    let problem_details = req.files['problem_details'][0].filename;
+    // let industry_logo = req.files['industry_logo'][0].filename;
+    // let problem_details = req.files['problem_details'][0].filename;
 
     const newProject = new Project({ name_of_industry,
         website,
         type_of_industry,
-        industry_logo,
+        // industry_logo,
         name_of_contact_person,
         designation_of_contact_person,
         email_of_contact_person,
         problem_faced,
-        problem_details,
+        // problem_details,
         other_details})
     try {
         await newProject.save();
