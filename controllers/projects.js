@@ -4,9 +4,9 @@ const Project = require('../models/project');
 
 exports.getProjects = async (req, res) => { 
     try {
-        const projects = await Project.find();
-                
-        res.status(200).json(projects);
+        const projects =  Project.find();
+
+        res.status(200).json(await projects);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
