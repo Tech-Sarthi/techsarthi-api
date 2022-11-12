@@ -14,7 +14,7 @@ app.use(cors());
 
 // db
 mongoose
-  .connect(process.env.DATABASE)
+  .connect("mongodb+srv://techsarthi:techsarthi123@cluster0.ze8welc.mongodb.net/?retryWrites=true&w=majority")
   .then(() => console.log("DB Connected"))
   .catch((err) => `DB Connection failed due to ${err.message}`);
 
