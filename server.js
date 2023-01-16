@@ -16,7 +16,7 @@ app.use(cors());
 
 // db
 mongoose
-  .connect("mongodb+srv://techsarthi:techsarthi123@cluster0.ze8welc.mongodb.net/?retryWrites=true&w=majority")
+  .connect(process.env.DATABASE)
   .then(() => console.log("DB Connected"))
   .catch((err) => `DB Connection failed due to ${err.message}`);
 
@@ -35,4 +35,13 @@ fs.readdirSync("./routes", { withFileTypes: true })
 
 // port
 port = process.env.PORT || 8000;
+
+
+// Making Build Folder as Public 
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 app.listen(port, () => console.log(`server is running on port ${port}`));
