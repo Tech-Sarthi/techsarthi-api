@@ -24,7 +24,6 @@ mongoose
 app.use (express.urlencoded({extended: true}));
 app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
-app.use(express.static(path.join(__dirname, "techsarthi-frontend/build")))
 
 //routes middleware
 fs.readdirSync("./routes", { withFileTypes: true })
