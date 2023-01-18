@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
+const config = require('./config.json');
 
 
 require("dotenv").config();
@@ -16,7 +17,7 @@ app.use(cors());
 
 // db
 mongoose
-  .connect("mongodb+srv://techsarthi:techsarthi123@techsarthi.k0fu8ks.mongodb.net/?retryWrites=true&w=majority")
+  .connect(config.connectionString)
   .then(() => console.log("DB Connected"))
   .catch((err) => `DB Connection failed due to ${err.message}`);
 
