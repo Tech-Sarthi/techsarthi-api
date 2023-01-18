@@ -26,7 +26,7 @@ app.use(morgan("dev"));
 app.use(bodyParser.json({ limit: "2mb" }));
 
 //routes middleware
-fs.readdirSync("./routes", { withFileTypes: true })
+fs.readdirSync(path.join(__dirname, 'routes'), { withFileTypes: true })
   .filter((dirent) => dirent.isFile())
   .map((dirent) => dirent.name)
   .map((r) => {
