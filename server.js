@@ -30,7 +30,7 @@ fs.readdirSync(path.join(__dirname, 'routes'), { withFileTypes: true })
   .filter((dirent) => dirent.isFile())
   .map((dirent) => dirent.name)
   .map((r) => {
-    app.use("/", require("./routes/" + r));
+    app.use("/api", require("./routes/" + r));
   });
 
 // port
