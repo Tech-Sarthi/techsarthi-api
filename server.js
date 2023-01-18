@@ -17,7 +17,7 @@ app.use(cors());
 
 // db
 mongoose
-  .connect(config.connectionString)
+  .connect(process.env.DATABASE)
   .then(() => console.log("DB Connected"))
   .catch((err) => `DB Connection failed due to ${err.message}`);
 
