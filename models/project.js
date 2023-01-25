@@ -59,6 +59,10 @@ const projectSchema = new mongoose.Schema(
     problem_details: {
       type: String,
     },
+    image_src :{
+      type: String,
+      default: '/project.png'
+    },
 
     likeCount: {
       type: Number,
